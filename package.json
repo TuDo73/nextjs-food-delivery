@@ -1,0 +1,30 @@
+{
+  "name": "next-food-delivery",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.4.1",
+    "@emotion/styled": "^11.3.0",
+    "@types/react-transition-group": "^4.4.3",
+    "@types/swiper": "^5.4.3",
+    "react-transition-group": "^4.4.2",
+    "swiper": "6.0.2",
+    "axios": "^0.22.0",
+    "react-icons": "^4.3.1",
+    "next": "11.1.2",
+    "react": "17.0.2",
+    "react-dom": "17.0.2"
+  },
+  "devDependencies": {
+    "@types/react": "17.0.29",
+    "eslint": "7.32.0",
+    "eslint-config-next": "11.1.2",
+    "typescript": "4.4.4"
+  }
+}
