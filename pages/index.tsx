@@ -1,6 +1,7 @@
 import * as React from "react";
 import type { NextPage } from "next";
 import { GetServerSideProps } from "next";
+import { InferGetServerSidePropsType } from "next";
 import { CSSTransition } from "react-transition-group";
 
 // Components
@@ -17,10 +18,10 @@ import productService from "services/product/productService";
 // Types
 import { CatType, ProdType } from "types";
 
-const Home: NextPage = ({
+const Home = ({
   categoriesData,
   productsData,
-}: CatType & ProdType) => {
+}: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const [categories, setCategories] = React.useState(categoriesData);
   const [products, setProducts] = React.useState(productsData);
   const [loading, setLoading] = React.useState(true);
@@ -53,9 +54,9 @@ const Home: NextPage = ({
 
 export default Home;
 
-export const getServerSideProps: GetServerSideProps = async () => {
-  let categoriesData = [];
-  let productsData = [];
+export const getServerSideProps = async () => {
+  let categoriesData: CatType[] = [];
+  let productsData: ProdType[] = [];
 
   const [catData, prodData] = await Promise.all([
     categoryService.getAll(),
