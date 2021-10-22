@@ -1,6 +1,4 @@
 import { LoadingStyle } from "./Loading.styles";
-// Helper
-// import { classes } from "helpers";
 
 const Loading = () => {
   return (

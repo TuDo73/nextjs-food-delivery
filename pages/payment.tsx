@@ -13,8 +13,6 @@ import { CgClose } from "react-icons/cg";
 import image from "public/assets/images/ta-cash.svg";
 import image2 from "public/assets/images/payment_61.png";
 
-// Context
-
 // Helper
 import { classes } from "global/helpers";
 // Hooks
@@ -346,7 +344,6 @@ const Payment = () => {
                     <div className="method-opt">
                       <Image src={image2} alt="icon" />
                       <p>Card</p>
-                      {/* <span className="icon-checkmark"><ImCheckmark /></span> */}
                     </div>
                   </div>
                   <div className="popup-action">

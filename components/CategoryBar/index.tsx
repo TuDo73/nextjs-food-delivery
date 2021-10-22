@@ -8,7 +8,6 @@ import { IoSearch } from "react-icons/io5";
 import { CgClose } from "react-icons/cg";
 // Helper
 import { classes } from "global/helpers";
-// Hook
 
 // Types
 import { CatType } from "types";
@@ -39,12 +38,6 @@ const CategoryBar = ({ categories, setCatData }: CatProps) => {
     let boundTop = 65;
     let cloneCats = [...categories];
 
-    // let update = cloneCats.map((category) =>
-    //   category.id == catAnchorID
-    //     ? { ...category, isSelected: true }
-    //     : { ...category, isSelected: false }
-    // );
-
     for (let category of cloneCats) {
       if (category.code === catAnchorID) {
         category.isSelected = true;
@@ -71,7 +64,6 @@ const CategoryBar = ({ categories, setCatData }: CatProps) => {
 
     //handle click at last slide
     if (
-      // swiper.snapIndex == swiper.snapGrid.length - 1 &&
       swiper.isEnd &&
       swiper.snapIndex !== swiper.activeIndex &&
       swiper.clickedSlide.classList.contains("swiper-slide-active")

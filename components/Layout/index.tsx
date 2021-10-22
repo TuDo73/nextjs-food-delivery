@@ -46,7 +46,6 @@ const Layout = ({ children }) => {
         ></div>
         <Header />
         <MainStyle>
-          {/* <Cart /> */}
           <Banner
             isOpenInfoPopup={isOpenInfoPopup}
             setIsOpenInfoPopup={setIsOpenInfoPopup}

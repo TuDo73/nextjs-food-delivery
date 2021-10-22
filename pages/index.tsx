@@ -1,11 +1,7 @@
 import * as React from "react";
-import type { NextPage } from "next";
-import { GetServerSideProps } from "next";
 import { InferGetServerSidePropsType } from "next";
-import { CSSTransition } from "react-transition-group";
 
 // Components
-import Loading from "components/Loading";
 import CategoryBar from "components/CategoryBar";
 import OrderList from "components/OrderList";
 import Cart from "components/Cart";
@@ -24,25 +20,9 @@ const Home = ({
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const [categories, setCategories] = React.useState(categoriesData);
   const [products, setProducts] = React.useState(productsData);
-  const [loading, setLoading] = React.useState(true);
-  const nodeRef = React.useRef(null);
-  // console.log(categories);
-  // console.log(products);
 
   return (
     <>
-      {/* <CSSTransition
-        nodeRef={nodeRef}
-        in={loading}
-        timeout={300}
-        classNames="loading"
-        unmountOnExit
-      >
-        <div ref={nodeRef}>
-          <Loading />
-        </div>
-      </CSSTransition> */}
-      {/* {!loading && <section className="main-order">order</section>} */}
       <Cart />
       <section className="main-order">
         <CategoryBar categories={categories} setCatData={setCategories} />
@@ -66,17 +46,16 @@ export const getServerSideProps = async () => {
   let cats = catData.data;
   let prods = prodData.data;
 
-  for (let i = 0; i < prods.length; i++) {
-    for (let j = 0; j < cats.length; j++) {
-      if (!cats[j].products) {
-        cats[j].products = [];
-      }
+  cats.map((category) => {
+    const product = prods.filter(
+      (product) => product.category_code === category.code
+    );
 
-      if (prods[i].category_code === cats[j].code) {
-        cats[j].products.push(prods[i]);
-      }
+    if (product) {
+      category.products = product;
     }
-  }
+    return category;
+  });
 
   categoriesData = cats;
   productsData = prods;
